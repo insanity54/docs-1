@@ -12,7 +12,7 @@ What does it mean to own a piece of the internet? Can you sell a meme to the hig
 
 As builders, we'll be exploring NFTs from the technical side, taking them apart, and seeing how they work. We'll also take a look at some of the use cases for NFTs, so that we can help build new experiences around them.
 
-We'll be building on a background of modern web development, with a focus on JavaScript. Along the way, we'll get familiar with the core technologies that make NFTs possible, like smart contracts and content-addressed storage. If you're a newcomer to the space and find yourself confused, we want to know about it! Please [open an issue](https://github.com/filecoin-storage/docs/issues/new?assignees=&labels=need%2Ftriage&template=open-an-issue.md&title=%5BCLARIFICATION+NEEDED%5D+%28add+your+title+here%21%29) with any suggestions for how to make this content more accessible.
+We'll be building on a background of modern web development, with a focus on JavaScript. Along the way, we'll get familiar with the core technologies that make NFTs possible, like smart contracts and content-addressed storage. If you're a newcomer to the space and find yourself confused, we want to know about it! Please [open an issue](https://github.com/web3-storage/docs/issues/new?assignees=&labels=need%2Ftriage&template=open-an-issue.md&title=%5BCLARIFICATION+NEEDED%5D+%28add+your+title+here%21%29) with any suggestions for how to make this content more accessible.
 
  ## Quick start
 
@@ -24,6 +24,6 @@ We'll be building on a background of modern web development, with a focus on Jav
 
  ## Contribute to NFT School
 
- NFT School is an [open-source project](https://github.com/filecoin-storage/docs/) that welcomes contributors of all specialties from all over the world!
+ NFT School is an [open-source project](https://github.com/web3-storage/docs/) that welcomes contributors of all specialties from all over the world!
 
- Are you a great communicator who'd like to make the global NFT developer community better? **Share your knowledge with your peers** and contribute a tutorial, how-to, or concept guide to this open-source site. See what existing [content request issues](https://github.com/filecoin-storage/docs/issues?q=is%3Aissue+is%3Aopen+label%3Atopic%2Fdesign-content) are looking for writers, or if you'd like to add something completely new, [open an issue](https://github.com/filecoin-storage/docs/issues/new?assignees=&labels=need%2Ftriage&template=content-or-feature-suggestion.md&title=%5BCONTENT+REQUEST%5D+%28add+your+title+here%21%29) to suggest new content. (And thank you in advance!)
+ Are you a great communicator who'd like to make the global NFT developer community better? **Share your knowledge with your peers** and contribute a tutorial, how-to, or concept guide to this open-source site. See what existing [content request issues](https://github.com/web3-storage/docs/issues?q=is%3Aissue+is%3Aopen+label%3Atopic%2Fdesign-content) are looking for writers, or if you'd like to add something completely new, [open an issue](https://github.com/web3-storage/docs/issues/new?assignees=&labels=need%2Ftriage&template=content-or-feature-suggestion.md&title=%5BCONTENT+REQUEST%5D+%28add+your+title+here%21%29) to suggest new content. (And thank you in advance!)

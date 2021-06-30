@@ -2,7 +2,7 @@
 
 git config --global user.name "$GH_USERNAME"
 git config --global user.email "$GH_USER_EMAIL"
-git remote add fdocs https://$${GH_TOKEN}@github.com/filecoin-storage/docs.git > /dev/null 2>&1
+git remote add fdocs https://$${GH_TOKEN}@github.com/web3-storage/docs.git > /dev/null 2>&1
 git fetch fdocs
 git checkout --track origin/$PR_HEAD_REF
 git pull

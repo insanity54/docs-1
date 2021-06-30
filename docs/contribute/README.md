@@ -6,7 +6,7 @@ description: Learn how to contribute content to the web3.storage site.
 
 Thank you for your interest in contributing to web3.storage! As an open-source project, this site relies on people like you to suggest, create, and improve content.
 
-**To get started, check the GitHub repo to see what existing [content request issues](https://github.com/filecoin-storage/docs/issues?q=is%3Aissue+is%3Aopen+label%3Atopic%2Fdesign-content) are looking for writers** — or if you'd like to add something completely new, [open an issue](https://github.com/filecoin-storage/docs/issues/new?assignees=&labels=need%2Ftriage&template=content-or-feature-suggestion.md&title=%5BCONTENT+REQUEST%5D+%28add+your+title+here%21%29) to suggest new content. Once you've got a project in mind, the guidelines below can help you create  content that's clear, compelling, and valuable to the reader.
+**To get started, check the GitHub repo to see what existing [content request issues](https://github.com/web3-storage/docs/issues?q=is%3Aissue+is%3Aopen+label%3Atopic%2Fdesign-content) are looking for writers** — or if you'd like to add something completely new, [open an issue](https://github.com/web3-storage/docs/issues/new?assignees=&labels=need%2Ftriage&template=content-or-feature-suggestion.md&title=%5BCONTENT+REQUEST%5D+%28add+your+title+here%21%29) to suggest new content. Once you've got a project in mind, the guidelines below can help you create  content that's clear, compelling, and valuable to the reader.
 
 ## Types of content
 
@@ -84,7 +84,7 @@ If you have to use an acronym, spell the full phrase first and include the acron
 
 ### Formatting
 
-web3.storage follows the _GitHub Flavored Markdown_ syntax. This way, readers have the option to view articles on either the main web3.storage website or [its GitHub repo](https://github.com/filecoin-storage/docs).
+web3.storage follows the _GitHub Flavored Markdown_ syntax. This way, readers have the option to view articles on either the main web3.storage website or [its GitHub repo](https://github.com/web3-storage/docs).
 
 We use the rules set out in the [VSCode Markdownlint](https://github.com/DavidAnson/vscode-markdownlint) extension. You can import these rules into any text editor like Vim or Sublime. All rules are listed [within the Markdownlint repository](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md).
 
