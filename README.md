@@ -8,7 +8,7 @@ This repository contains code and content for the web3.storage website, an open-
 
 **Contributions are more than welcome!** As an open-source project, this site relies on people like you to suggest, create, and improve content. To get started ...
 
-- Check this repo's [issues page](https://github.com/filecoin-storage/docs/issues) to see what items are in need of help, including content request issues looking for writers.
+- Check this repo's [issues page](https://github.com/web3-storage/docs/issues) to see what items are in need of help, including content request issues looking for writers.
 - If you're writing something new, read through the contribution guide for guidelines on types of content, grammar, formatting, and style.
 - For details on building the site locally and submitting pull requests, see the ["For site developers"](#for-site-developers) section below.
 
@@ -23,13 +23,13 @@ To build a local copy, run the following:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/filecoin-storage/docs.git
+   git clone https://github.com/web3-storage/docs.git
    ```
 
 1. Move into the `nft-website` folder and install the NPM dependencies:
 
    ```bash
-   cd nft-website
+   cd docs
    npm install
    ```
 
@@ -41,7 +41,7 @@ To build a local copy, run the following:
 
 1. Open [localhost:8080](http://localhost:8080) in your browser.
 1. Close the local server with `CTRL` + `c`.
-1. To restart the local server, run `npm start` from within the `nft-website` folder.
+1. To restart the local server, run `npm start` from within the `docs` folder.
 
 ### PR and preview
 
