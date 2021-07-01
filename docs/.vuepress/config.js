@@ -67,17 +67,46 @@ module.exports = {
         nav: require('./nav/en'),
         sidebar: [
           {
-            title: 'Concepts',
+            title: 'Quick start',
             collapsable: false,
             children: [
-              '/concepts/example-topic/'
+                '/quick-start/'
             ]
           },
           {
-            title: 'Contribute',
+            title: 'Concepts',
             collapsable: false,
             children: [
-              '/contribute/'
+                '/concepts/',
+                '/concepts/content-addressing',
+                '/concepts/decentralized-storage',
+            ]
+          },
+          {
+            title: 'How tos',
+            collapsable: false,
+            children: [
+              '/how-tos/store',
+              '/how-tos/retrieve',
+              '/how-tos/query',
+              '/how-tos/regenerate-api-key',
+            ]
+          },
+          {
+            title: 'Tutorials',
+            collapsable: false,
+            children: [
+              '/tutorials/storage-app',
+            ]
+          },
+          {
+            title: 'Reference',
+            collapsable: false,
+            children: [
+              '/reference/authentication',
+              '/reference/get',
+              '/reference/list',
+              '/reference/put',
             ]
           }
         ]
