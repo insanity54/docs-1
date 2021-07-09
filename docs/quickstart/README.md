@@ -11,9 +11,9 @@ The decentralized web is complicated, but it doesn't have to be! In this quick s
 
 You need an account to get an API key and manage your stored data. Sign up is free:
 
-1. Go to [web3.storage/sign-up](https://web3.storage/sign-up)
-1. Enter your information.
-1. Verify your email address by clicking the **Verify email** link in your email inbox.
+1. Go to [web3.storage/login](https://web3.storage/login)
+1. Enter your email address.
+1. Verify your email address by clicking the **Log in** button in your email inbox.
 1. You're all set!
 
 Next up, [getting an API key ↓](#get-an-api-key)
@@ -22,15 +22,35 @@ Next up, [getting an API key ↓](#get-an-api-key)
 
 Now that you've got your account set up, you can create an API key. You'll need an API key to interact with Web3.Storage using the JavaScript client library:
 
-1. Head to [web3.storage/sign-in](https://web3.storage/sign-in) and sign in.
-1. Click **Create API key**.
-1. Note down your API key.
+1. Click **API Tokens**.
+1. Click **New Token**. 
+1. Enter a descriptive name for this token:
+
+    ![Web3.Storage API key creation screen.](./images/name-an-api-key.png)
+
+1. Click **Create**.
+1. Make a note of the **Key**. Click **Copy** to copy the API key to your clipboard.
 
     :::warning
     Do not share your API with anyone else. This key is specific to your account.
     :::
 
 Next up, [uploading a file to Web3.Storage ↓](#upload-a-file)
+
+## Create project
+
+You need to create somewhere for your project code to live:
+
+1. Make a new folder for everything to live in.
+1. Move into this folder and use NPM to install the `web3.storage` dependency:
+
+    ```shell
+    npm install web3.storage
+    ```
+
+1. In the same folder, create a file called `quickstart.js`.
+
+That's all we need to do for the project set up! Next we'll add steps to upload a file.
 
 ## Upload a file
 
