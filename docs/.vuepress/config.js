@@ -94,20 +94,10 @@ module.exports = {
             ]
           },
           {
-            title: 'Tutorials',
-            collapsable: false,
-            children: [
-              '/tutorials/storage-app',
-            ]
-          },
-          {
             title: 'Reference',
             collapsable: false,
             children: [
-              '/reference/authentication',
-              '/reference/get',
-              '/reference/list',
-              '/reference/put',
+              '/reference/client-library'
             ]
           }
         ]
