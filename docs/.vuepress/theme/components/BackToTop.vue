@@ -2,18 +2,13 @@
   <transition name="fade">
     <svg
         v-if="show"
-        class="go-to-top"
+        class="back-to-top"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 45 26"
-        @click="scrollToTop"
+        viewBox="0 0 49 28"
     >
-        <path
-            d="M19.989 5.004l-5 .003.004 5 5-.003zM14.992 10.008l-5 .003.004 5 5-.003zM9.996 15.011l-5 .004.004 5 5-.004zM5 20.015l-5 .004.004 5 5-.004zM20.004 0l5 .004-.004 5L20 5zM25 5.004l5 .004-.004 5-5-.004zM29.996 10.008l5 .004-.004 5-5-.004z"
-        />
-        <path
-            d="M34.992 15.011l5 .004-.004 5-5-.004zM39.989 20.015l5 .004-.004 5-5-.004z"
-        />
+      <path d="M23.334 1.414l-21.92 21.92a2 2 0 000 2.829l.707.707a2 2 0 002.829 0L26.87 4.95a2 2 0 000-2.829l-.707-.707a2 2 0 00-2.829 0z" />
+      <path d="M22.615 4.95l21.92 21.92a2 2 0 002.829 0l.707-.708a2 2 0 000-2.828L26.15 1.414a2 2 0 00-2.83 0l-.706.707a2 2 0 000 2.828z" />
     </svg>
   </transition>
 </template>
@@ -59,36 +54,46 @@ export default {
 </script>
 
 <style lang='stylus' scoped>
-.go-to-top {
-  cursor: pointer;
+.back-to-top {
   position: sticky;
-  align-self: flex-end;
-  bottom: 2rem;
-  margin-right: 1.5rem;
-  margin-bottom: -1rem;
-  width: 2rem;
-  color: $arrowBgColor;
-  z-index: 1;
-  padding: 1rem;
+  opacity: 0.7;
 
-  transition: color 0.3s;
+  cursor: pointer;
+  align-self: flex-end;
+
+  --inner-size: 2.5rem;
+  --spacing: calc(var(--inner-size) * 0.25);
+  --size: calc(var(--inner-size) - var(--spacing) * 2);
+
+  bottom: 2rem;
+  right: 0;
+  transform: translateX(-100%);
+
+  height: var(--size);
+  width: var(--size);
+  padding: var(--spacing);
+
+  color: $arrowColor;
+  background-color: $arrowBgColor;
+
+  transition: opacity 0.3s;
 }
 
-.go-to-top:hover {
-  color: lighten($arrowBgColor, 30%);
+.back-to-top:hover {
+  opacity: 1;
 }
 
 @media (max-width: 959px) {
-  .go-to-top {
+  .back-to-top {
     display: none;
   }
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s;
+  transition: transform 0.2s;
 }
 
 .fade-enter, .fade-leave-to {
-  opacity: 0;
+  transform: translateX(-100%) translateY(150%);
 }
 </style>

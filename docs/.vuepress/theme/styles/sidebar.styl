@@ -8,11 +8,21 @@ ul.sidebar-links > li > a {
 
 .sidebar {
 	background-color: $layoutBgColor;
-	color: $w3storage-black;
+	color: $w3storage-purple;
+
+	transition: transform 0.3s ease;
+
+	.sidebar-links {
+		position: relative;
+	}
+
+	.nav-links {
+	border-color: $w3storage-red-light !important;
+	}
+
 
 	.sidebar-group:not(.collapsable) .sidebar-heading:not(.clickable) {
 		color: $w3storage-purple;
-		font-weight: 600;
 	}
 
 	.sidebar-heading {
@@ -31,13 +41,13 @@ ul.sidebar-links > li > a {
 	}
 
 	a.sidebar-link.active {
-		color: $w3storage-white;
+		color: $w3storage-yellow;
 		font-weight: bold;
 		border-left: 4px solid $w3storage-yellow;
 	} 
 
 	a.sidebar-link:hover {
-		color: $w3storage-white;
+		color: $w3storage-yellow;
 	} 
 
 	.sidebar-sub-headers a.sidebar-link.active {
@@ -80,6 +90,12 @@ ul.sidebar-links > li > a {
 
 .sidebar::-webkit-scrollbar-thumb:hover, .sidebar:hover::-webkit-scrollbar-thumb {
 	background: $borderColor;
+}
+
+@media (max-width: $MQNarrow) {
+	.sidebar {
+		border-right: none;
+	}
 }
 
 @media (max-width: $MQMobile) {

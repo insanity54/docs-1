@@ -64,11 +64,15 @@ export default {
 
 <style lang="stylus" scoped>
 .page {
-  background-color: $w3storage-blue-dark;
   padding-bottom: 2rem;
+  background-color: $contentBgColor;
 }
 
 .content-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
   padding-top: 0;
 }
 
@@ -76,13 +80,12 @@ export default {
 	font-size: 1.2rem;
   max-width: 100%;
   padding: 2rem 2rem 0 2rem;
-  float: left;
+  margin: unset;
 }
 
 @media (min-width: $MQMobile) {
-
   .page {
-    box-shadow: inset -16px 0 0 0 $w3storage-red;
+    box-shadow: inset -16px 0 0 0 $layoutBgColor;
   }
   .content-footer {
     padding: 0 2.5rem;

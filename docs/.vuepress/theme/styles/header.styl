@@ -23,7 +23,7 @@
 	}
 
 	.sidebar-button {
-		color: $w3storage-yellow;
+		color: $w3storage-purple;
 		padding: 0.4rem;
 
 		.icon {
@@ -37,15 +37,37 @@ header.navbar .links {
 	background-color: $layoutBgColor;
 }
 
+.theme-container .nav-links a {
+	color: $w3storage-purple;
+	font-weight: 600;
+}
+
+.theme-container .nav-item > a:hover, .theme-container .nav-item > a.router-link-active {
+	color: $w3storage-yellow;
+	border-bottom: none !important;
+}
+
+@media screen and (min-width: 719px) {
+	.theme-container .nav-links .nav-item {
+		margin-left: 3rem;
+	}
+}
+
 #algolia-search-input {
 	border-radius: 0;
 	border: none;
 }
 
+.search-box input {
+	background-image: url('/images/search.svg') !important;
+}
+
 header.navbar .links input {
 	font-family: inherit;
 	border-radius: 0;
+	border: 0;
 	color: $textColor;
+	background-color: $contentBgColor;
 	margin-top: 0.1em;
 }
 
@@ -83,15 +105,57 @@ header.navbar .algolia-autocomplete {
 
 @media (min-width: $MQNarrow) {
 	header.navbar .links {
-		display: flex;
-		flex-direction: row-reverse;
-
-		input, .suggestions {
-			width: 10em;
+		input {
+			width: 0;
+			background-color: $w3storage-purple;
 		}
 
-		input:focus, .suggestions {
+		.suggestions {
+			width: 22.5em;
+			background-color: $layoutBgColor;
+			a {
+				color: $w3storage-purple;
+			}
+			a:hover {
+				color: $w3storage-yellow;
+			}
+			padding-bottom: 0.5em;
+		}
+
+		input:focus {
 			width: 20em;
+		}
+	}
+}
+
+@media (max-width: $MQNarrow) {
+	header.navbar .links {
+		input {
+			margin-right: 0.4em;
+			background-color: $w3storage-purple;
+
+			// prevent zooming on iOS
+			box-sizing: border-box;
+			font-size: 1rem;
+
+			&:focus {
+				width: 17em;
+			}
+		}
+		.suggestions {
+			width: 18.6em;
+			border: 2px solid $w3storage-purple;
+			background-color: $layoutBgColor;
+			a {
+				color: $w3storage-purple;
+			}
+			a:hover {
+				color: $w3storage-yellow;
+			}
+			padding-top: 0.4em;
+			padding-bottom: 0.5em;
+			margin-top: 0;
+			margin-right: 5px;
 		}
 	}
 }
@@ -108,6 +172,21 @@ header.navbar .algolia-autocomplete {
 			&:focus {
 				width: 87.5vw;
 			}
+		}
+		.suggestions {
+			width: 86.75vw;
+			border: 2px solid $w3storage-purple;
+			background-color: $layoutBgColor;
+			a {
+				color: $w3storage-purple;
+			}
+			a:hover {
+				color: $w3storage-yellow;
+			}
+			padding-top: 0.4em;
+			padding-bottom: 0.5em;
+			margin-top: 0;
+			margin-right: 6px;
 		}
 	}
 
