@@ -18,18 +18,24 @@ html {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+	font-variant-ligatures: none;
 }
 
 body {
 	background-color: transparent;
+	background-image: url('/images/background-schematics.svg');
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
     overflow-y: scroll;
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .theme-container {
+	z-index: 4;
 	min-height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -78,10 +84,18 @@ img[loading] {
 
 a {
 	color: $linkColor;
+	font-weight: bold;
 }
 
 code {
 	word-break: break-word;
+}
+
+.theme-default-content code {
+	background-color: $highlightColor;
+	color: $textColor;
+	font-family: 'Space Mono', monospace;
+	font-size: 0.95em;
 }
 
 svg.icon.outbound {
@@ -89,20 +103,34 @@ svg.icon.outbound {
 }
 
 a.header-anchor {
-	padding-right: 0;
-	margin-left: -0.5em;
+	color: $headingColor;
+	font-weight: 300;
+}
+
+a.header-anchor:hover {
+	text-decoration: none !important;
 }
 
 h1, h2, h3, h4, h5 {
-	font-family: 'VT323', monospace;
-	font-weight: 400;
+	font-family: 'Space Grotesk', sans-serif;
+	font-weight: 500;
 	color: $headingColor;
 }
 
-h1 {
-	font-size: 3rem;
-	padding-bottom: 0.5rem;
-	line-height: 2.5rem;
+h2 {
+	border-color: $headingColor;
+}
+
+h3 {
+	font-size: 1.5rem;
+}
+
+h4 {
+	font-size: 1.25rem;
+}
+
+h5 {
+	font-size: 1.15rem;
 }
 
 .theme-default-content:not(.custom) {
@@ -111,32 +139,14 @@ h1 {
 	}
 }
 
-h2 {
-	font-size: 2rem;
-	line-height: 1.6rem;
-	border-bottom: 3px solid $tertiaryColor;
-    box-shadow:  2px 5px 0 -2px $secondaryColor;
-}
-
-h3 {
-	font-size: 1.75rem;
-	line-height: 1.75rem;
-}
-
-h4 {
-	font-size: 1.5rem;
-	line-height: 1.5rem;
-}
-
-h5 {
-	font-size: 1.35rem;
-	line-height: 1.1rem;
-}
-
 :root {
 	--accent-color: $accentColor;
 	--text-color: $textColor;
 	--border-color: $borderColor;
 	--code-bg-color: $codeBgColor;
 	--highlight-color: $highlightColor;
+}
+
+tr:nth-child(2n) {
+    background-color: transparent;
 }

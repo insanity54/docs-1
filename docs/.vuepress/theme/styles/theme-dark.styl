@@ -1,4 +1,11 @@
 @media (prefers-color-scheme: dark) {
+    html {
+        background-color: $mainBgColorDark !important;
+    }
+
+    body {
+        background-image: url('/images/background-schematics-dark.svg') !important;
+    }
     .theme-container {
     
         // Content
@@ -46,7 +53,7 @@
             /* Main category (eg. Getting Started) */
             .algolia-docsearch-suggestion--category-header {
                 color: $textColorDark;
-                background-color: $primaryColor;
+                background-color: $w3storage-purple;
                 border-color: lighten($contentBgColorDark, 10%);
             }
 
@@ -101,45 +108,13 @@
             }
         }
 
-        // Alert panels
-        .theme-default-content {
-
-            .tip {
-                background-color: darken($accentColor, 75%);
-                .custom-block-title {
-                    color: $textColorDark;
-                }
-                color: $textColorDark;
-            }
-
-            .warning {
-                border-left: 4px solid #e7c000;
-                background-color: darken(#fff7d2, 87%);
-                .custom-block-title {
-                    color: $textColorDark;
-                }
-                color: $textColorDark;
-                a {
-			        color: $linkColorDark;
-		        }
-            }
-
-            .danger {
-                border-left: 4px solid #a93e3e;
-                background-color: darken(#ffe6e6, 90%);
-                .custom-block-title {
-                    color: $textColorDark;
-                }
-                color: $textColorDark;
-                a {
-			        color: $linkColorDark;
-		        }
-            }
-        }
-
         h1, h2, h3, h4, h5
         a.header-anchor {
 	        color: $headingColorDark;
+        }
+
+        h2 {
+            border-color: $headingColorDark;
         }
 
         a {
@@ -150,44 +125,65 @@
             color: $linkColorDark;
         }
 
-        code {
-            color: $textColorDark;
-            background: lighten($contentBgColorDark, 20%);
+        .btn-primary {
+	        background-color: $buttonColorDark;
+        	&:hover {
+		        background-color: darken($buttonColorDark, 15%);
+	        }
         }
 
-        td, tr, th {
-            border-color: lighten($contentBgColorDark, 20%);
-            background: $contentBgColorDark;
+        .theme-default-content code {
+            background-color: $highlightColorDark;
+            color: $textColorDark;
+        }
+
+        // Alert panels
+        .theme-default-content {
+            .custom-block {
+                a {
+                    color: $linkColorDark;
+                }
+            }
+
+            .tip {
+                border: solid $w3storage-green;
+                border-width: 1px 1px 1px 6px;
+                background-color: transparent;
+                color: $w3storage-green;
+                .custom-block-title {
+                    color: $w3storage-green;
+                }
+            }
+
+            .warning {
+                border: solid $w3storage-yellow;
+                border-width: 1px 1px 1px 6px;
+                background-color: transparent;
+                color: $w3storage-yellow;
+                .custom-block-title {
+                    color: $w3storage-yellow;
+                }
+            }
+
+            .danger {
+                border: solid $w3storage-red;
+                border-width: 1px 1px 1px 6px;
+                background-color: transparent;
+                color: $w3storage-red;
+                .custom-block-title {
+                    color: $w3storage-red;
+                }
+            }
         }
 
         // Custom
         .feedback.feedback {
             background-color: $feedbackBgColorDark;
-            border-color: $feedbackBgColorDark;
+            border-color: transparent;
 
             h3 {
                 color: $headingColorDark;
             }
-        }
-    }
-
-    .btn-primary.btn-primary {
-        background-color: darken($tertiaryColor, 55%);
-        color: $textColorDark;
-
-        &:hover {
-            background-color: darken($secondaryColor, 40%);
-        }
-    }
-
-    .page-edit {
-        .edit-link.edit-link {
-            a {
-                color darken($textColorDark, 70%);
-            }
-        }
-        .last-updated .prefix.prefix {
-            color darken($textColorDark, 70%);
         }
     }
 

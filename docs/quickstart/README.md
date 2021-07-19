@@ -31,9 +31,9 @@ Now that you've got your account set up, you can create an API key. You'll need 
 1. Click **Create**.
 1. Make a note of the **Key**. Click **Copy** to copy the API key to your clipboard.
 
-    :::warning
-    Do not share your API with anyone else. This key is specific to your account.
-    :::
+:::warning
+Do not share your API with anyone else. This key is specific to your account.
+:::
 
 Next up, [uploading a file to Web3.Storage ↓](#upload-a-file)
 

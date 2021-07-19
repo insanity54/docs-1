@@ -1,5 +1,6 @@
 // .vuepress/config.js
 
+const MAIN_DOMAIN = process.env.MAIN_DOMAIN || 'https://staging.web3.storage'
 const DEPLOY_DOMAIN = 'https://docs.web3.storage'
 const SPEEDCURVE_ID = process.env.SPEEDCURVE_ID || ''
 const COUNTLY_KEY = process.env.COUNTLY_KEY || ''
@@ -12,8 +13,8 @@ module.exports = {
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'web3.storage Documentation',
-      description: 'web3.storage Documentation'
+      title: 'Web3.Storage Documentation',
+      description: 'Web3.Storage Documentation'
     }
   },
   markdown: {
@@ -33,13 +34,14 @@ module.exports = {
   themeConfig: {
     defaultImage: '/images/social-card.png',
     author: {
-      name: 'web3.storage',
+      name: 'Web3.Storage',
       twitter: '@protocollabs'
     },
     keywords:
-      'Filecoin, IPFS, dweb, protocol, decentralized web, InterPlanetary File System, dapp, documentation, docs, tutorial, how-to, Protocol Labs',
+      'Filecoin, IPFS, web3, dweb, protocol, decentralized web, distributed web, NFT, InterPlanetary File System, dapp, documentation, docs, tutorial, how-to, Protocol Labs',
     // edit links
     domain: DEPLOY_DOMAIN,
+    mainDomain: MAIN_DOMAIN,
     docsRepo: 'web3-storage/docs',
     docsDir: 'docs',
     docsBranch: 'main',
@@ -51,7 +53,7 @@ module.exports = {
     nextLinks: false,
     prevLinks: false,
     // ui/ux
-    logo: '/images/web3-storage-logo.svg',
+    logo: '/images/w3storage-logo.svg',
     locales: {
       '/': {
         label: 'English',
@@ -65,7 +67,7 @@ module.exports = {
             buttonText: 'Refresh'
           }
         },
-        nav: require('./nav/en'),
+        nav: require('./nav/en')({ mainDomain: MAIN_DOMAIN }),
         sidebar: [
           {
             title: 'Quickstart',
@@ -94,20 +96,10 @@ module.exports = {
             ]
           },
           {
-            title: 'Tutorials',
-            collapsable: false,
-            children: [
-              '/tutorials/storage-app',
-            ]
-          },
-          {
             title: 'Reference',
             collapsable: false,
             children: [
-              '/reference/authentication',
-              '/reference/get',
-              '/reference/list',
-              '/reference/put',
+              '/reference/client-library'
             ]
           }
         ]

@@ -131,10 +131,8 @@ export default {
 
 .feedback {
   background-color: $feedbackBgColor;
-  padding: 0 1.5rem 2rem 1.5rem;
-  border: 2px solid #fff;
-  box-shadow:  -2px -2px 0 1px $tertiaryColor,
-    2px 2px 0 1px $secondaryColor;
+  padding: 0.5rem 1.5rem 2rem 1.5rem;
+  border: 1px solid $accentColor;
 
   h3 {
     margin-bottom: 1rem;
