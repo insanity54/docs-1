@@ -9,12 +9,33 @@ The decentralized web is complicated, but it doesn't have to be! In this quick s
 
 ## Create an account
 
-You need an account to get an API key and manage your stored data. Sign up is free:
+You need an account to get an API key and manage your stored data. You can sign up using your email address, or GitHub Sign up is free:
+
+::::tabs
+
+::: tab First Tab
+Here's an example of using tabs to organize content.
+::: 
+
+::: tab Second Tab
+Another tab!
+:::
+::::
+
+### Use your email
 
 1. Go to [web3.storage/login](https://web3.storage/login)
 1. Enter your email address.
 1. Verify your email address by clicking the **Log in** button in your email inbox.
 1. You're all set!
+
+### Use GitHub 
+
+If you'd prefer, you can sign up to Web3.Storage using your GitHub account. Just click **GitHub** on the Login screen and then authorize web3-storage when asked by GitHub.
+
+![GitHub asking to authorize the Web3.Storage projet to a user account](./images/github-authorization-process.png)
+
+Once you've done this you can head on to [getting an API key ↓](#get-an-api-key)
 
 Next up, [getting an API key ↓](#get-an-api-key)
 
