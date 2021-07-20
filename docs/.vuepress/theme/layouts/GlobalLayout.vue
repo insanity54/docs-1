@@ -181,6 +181,10 @@ footer a {
     margin-right: 0;
     padding-right: 0;
   }
+
+  .sidebar-bottom {
+    height: 8rem; // make room for footer
+  }
 }
 
 </style>
