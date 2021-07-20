@@ -31,7 +31,7 @@ Now that you've got your account set up, you can create an API key. You'll need 
 1. Make a note of the **Key**. Click **Copy** to copy the API key to your clipboard.
 
 :::warning Keep your API key private
-Do not share your API with anyone else. This key is specific to your account.
+Do not share your API key with anyone else. This key is specific to your account.
 :::
 
 Next up, [uploading a file to Web3.Storage ↓](#upload-a-file)
@@ -68,7 +68,7 @@ At some poit in the future the Web3.Storage client will be hosted on NPM. Until 
     node put-files.js --token<YOUR_TOKEN>
     ```
 
-    This will command will output something like:
+    This command will output something like:
 
     ```shell
     Content added with CID: bafybeiezmummmxc3xclgsnhbkz2vh42cakbccyvatqqdw6hz2tvt74pd3i
@@ -88,4 +88,3 @@ Viewing your files is simple, and can be done using a browser gateway:
 ## Next steps
 
 Congratulations, you've just covered the basics of Web3.Storage! Take a look at the [reference API section](/reference) for more details on what else you can do with this service.
-
