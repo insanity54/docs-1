@@ -122,7 +122,7 @@ Next up, [uploading a file to Web3.Storage ↓](#upload-a-file)
     node put-files.js --token<YOUR_TOKEN>
     ```
 
-This command will output something like:
+    This command will output something like:
 
     ```shell
     Content added with CID: bafybeiezmummmxc3xclgsnhbkz2vh42cakbccyvatqqdw6hz2tvt74pd3i
