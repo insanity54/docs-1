@@ -86,7 +86,7 @@ module.exports = {
               '/how-tos/store',
               '/how-tos/retrieve',
               '/how-tos/query',
-              '/how-tos/regenerate-api-key',
+              '/how-tos/regenerate-api-token',
             ]
           },
           {
@@ -203,7 +203,8 @@ module.exports = {
     ],
     'vuepress-plugin-chunkload-redirect',
     'vuepress-plugin-ipfs',
-    'vuepress-plugin-element-tabs'
+    'vuepress-plugin-element-tabs',
+    ['vuepress-plugin-code-copy', { align: 'bottom', color: '#fff' }]
   ],
   extraWatchFiles: ['.vuepress/nav/en.js']
 }
