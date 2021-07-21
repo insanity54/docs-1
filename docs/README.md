@@ -64,51 +64,11 @@ Next up, [uploading a file to Web3.Storage ↓](#upload-a-file)
 
 1. Create a file called `put-files.js` and paste in the following code:
 
-    ```javascript
-    import process from 'process'
-    import minimist from 'minimist'
-    import { Web3Storage, getFilesFromPath } from 'web3.storage'
-
-    async function main () {
-        const args = minimist(process.argv.slice(2))
-            const token = args.token
-
-            if (!token) {
-                console.error('A token is needed. You can create one on https://web3.storage')
-                    return
-            }
-
-        const storage = new Web3Storage({ token })
-
-            const files = await getFilesFromPath('./fixtures')
-            const cid = await storage.put(files)
-
-            console.log('Content added with CID:', cid)
-    }
-
-    main()
-    ```
+    <<< @/code-snippets/quickstart/put-files.js
 
 1. Create another file called `package.json` and paste in the following code:
 
-    ```javascript
-    {
-        "name": "web3-storage-examples",
-            "version": "0.0.0",
-            "private": true,
-            "description": "Examples of using web3.storage in Node.js",
-            "type": "module",
-            "scripts": {
-                "test": "echo \"Error: no test specified\" && exit 1"
-            },
-            "dependencies": {
-                "minimist": "^1.2.5",
-                "web3.storage": "^1.0.0"
-            },
-            "author": "Vasco Santos",
-            "license": "(Apache-2.0 AND MIT)"
-    }
-    ```
+    <<< @/code-snippets/quickstart/package-example.json
 
 1. Save both files, and then run `npm install` from your project folder:
 
