@@ -69,13 +69,7 @@ module.exports = {
         },
         nav: require('./nav/en')({ mainDomain: MAIN_DOMAIN }),
         sidebar: [
-          {
-            title: 'Quickstart',
-            collapsable: false,
-            children: [
-                '/quickstart/'
-            ]
-          },
+            '/',
           {
             title: 'Concepts',
             collapsable: false,
