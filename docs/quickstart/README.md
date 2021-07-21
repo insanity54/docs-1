@@ -9,11 +9,24 @@ The decentralized web is complicated, but it doesn't have to be! In this quick s
 
 ## Create an account
 
-You need an account to get an API key and manage your stored data. Sign up is free:
+You need an account to get an API key and manage your stored data. You can sign up using your email address, or GitHub Sign up is free:
 
-1. Go to [web3.storage/sign-up](https://web3.storage/sign-up)
-1. Enter your information.
-1. Verify your email address by clicking the **Verify email** link in your email inbox.
+### Use your email
+
+1. Go to [web3.storage/login](https://web3.storage/login)
+1. Enter your email address.
+1. Verify your email address by clicking the **Log in** button in your email inbox.
+1. You're all set!
+
+Next up, [getting an API key ↓](#get-an-api-key)
+
+### Use GitHub 
+
+1. Click **GitHub** on the Login screen 
+1. Authorize web3-storage when asked by GitHub.
+
+    ![GitHub asking to authorize the Web3.Storage projet to a user account](./images/github-authorization-process.png)
+
 1. You're all set!
 
 Next up, [getting an API key ↓](#get-an-api-key)
@@ -22,80 +35,69 @@ Next up, [getting an API key ↓](#get-an-api-key)
 
 Now that you've got your account set up, you can create an API key. You'll need an API key to interact with Web3.Storage using the JavaScript client library:
 
-1. Head to [web3.storage/sign-in](https://web3.storage/sign-in) and sign in.
-1. Click **Create API key**.
-1. Note down your API key.
+1. Go to the [tokens page](https://web3.storage/tokens) by clicking **API Tokens** → **New Token**.
+1. Enter a descriptive name for this token:
 
-:::warning
-Do not share your API with anyone else. This key is specific to your account.
+    ![Web3.Storage API key creation screen.](./images/name-an-api-key.png)
+
+1. Click **Create**.
+1. Make a note of the **Key**. Click **Copy** to copy the API key to your clipboard.
+
+:::warning Keep your API key private
+Do not share your API key with anyone else. This key is specific to your account.
 :::
 
 Next up, [uploading a file to Web3.Storage ↓](#upload-a-file)
 
-## Upload a file
+## Grab Web3.Storage client project
 
-Uploading a file to Web3.Storage using the JavaScript client library is pretty simple:
+At some poit in the future the Web3.Storage client will be hosted on NPM. Until then, we need to clone the `web3-storage-client` repository and build the client library.
 
-1. Authorize your session by using your API key:
+1. Clone the `web3-storage/web3-storage-client` repository from GitHub:
 
-    ```javascript
-    console.log("API key.");
+    ```shell
+    git clone --depth=1 https://github.com/web3-storage/web3.storage.git
     ```
 
-1. Bundle your file into an object:
+    The `--depth=1` option tells Git that we only want the latest updates instead of the entire version history for the project.
 
-    ```javascript
-    console.log("API key.");
+1. Move into the `web3.storage` folder and install the NPM dependencies:
+
+    ```shell
+    cd web3.storage
+    npm install
     ```
 
-1. Send your data to Web3.Storage:
+1. Move to the `/packages/client/examples/node.js` folder and install the dependencies for _this_ example:
 
-    ```javascript
-    console.log("API key.");
+    ```shell
+    cd packages/client/examples/node.js
+    npm install
     ```
+
+1. Run the script by calling `node put-files.js` and supplying your token using the `--token` option:
+
+    ```shell
+    node put-files.js --token<YOUR_TOKEN>
+    ```
+
+    This command will output something like:
+
+    ```shell
+    Content added with CID: bafybeiezmummmxc3xclgsnhbkz2vh42cakbccyvatqqdw6hz2tvt74pd3i
+    ```
+
+1. Make a note of the CID `bafyb...`. We'll need it in the next section.
 
 Next up, we'll look at how to [get and view your data from Web3.Storage ↓](#view-file)
 
 ## View your file
 
-There are two ways to view your file. You can either view it in the browser using a _gateway_, or by downloading it to your computer using the JavaScript client library.
-
-### Gateway
+Viewing your files is simple, and can be done using a browser gateway:
 
 1. Go to `gateway.web3.storage/YOUR_FILES_CID`, replacing `YOUR_FILES_CID` with the CID you get from uploading your file.
 1. You should be able to see your file in the browser!
 
-Next, take a look at how to [download your file using the JavaScript client library ↓](#javascript-client-library)
-
-### JavaScript client library
-
-1. Authorize your session by using your API key:
-
-    ```javascript
-    console.log("API key.");
-    ```
-
-1. Create a request object, including the CID of the file you want to download:
-
-    ```javascript
-    console.log("API key.");
-    ```
-
-1. Send your request to Web3.Storage:
-
-    ```javascript
-    console.log("API key.");
-    ```
-
-1. Web3.Storage will send your a `return` object with your data:
-
-    ```javascript
-    console.log("API key.");
-    ```
-
-1. That's it!
-
 ## Next steps
 
 Congratulations, you've just covered the basics of Web3.Storage! Take a look at the [reference API section](/reference) for more details on what else you can do with this service.
-
