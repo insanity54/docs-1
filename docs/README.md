@@ -24,9 +24,9 @@ You need an account to get an API key and manage your stored data. You can sign 
 
 Next up, [getting an API key ↓](#get-an-api-key)
 
-#### Use GitHub 
+#### Use GitHub
 
-1. Click **GitHub** on the Login screen 
+1. Click **GitHub** on the Login screen
 1. Authorize web3-storage when asked by GitHub.
 
 ![GitHub asking to authorize the Web3.Storage projet to a user account](./images/github-authorization-process.png)
