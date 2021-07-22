@@ -35,8 +35,11 @@ Store files using the `put()` method.
 ```javascript
 const fileInput = document.querySelector('input[type="file"]')
 
-// Pack files into a CAR and send to Web3.Storage
-const rootCid = await client.put(fileInput.files)
+// Pack files into a CAR and send to web3.storage
+const rootCid = await client.put(fileInput.files, {
+  name: 'cat pics',
+  maxRetries: 3
+})
 ```
 
 ### Return value
@@ -50,22 +53,13 @@ Method parameters are supplied in positional order.
 | Number | Type | Description |
 | ------ | ---- | ----------- |
 | 1 | `file[]` | An iterable collection of [Files](https://developer.mozilla.org/en-US/docs/Web/API/File) to be packed into a CAR and uploaded. |
-| 2 | `{options}` | Optional. A JSON object whose properties define certain Web3.Storage options and metadata about the files being uploaded. See below for more details. |
+| 2 | `{options}` | Optional. An object whose properties define certain Web3.Storage options and metadata about the files being uploaded. See below for more details. |
 
-An `{options}` object is a JSON object that defines option parameters:
-
-```json
-{
-  name: "cat pics",
-  maxRetries: 3,
-  onRootCidReady: handlerFunction,
-  onStoredChunk: handlerFunction
-}
-```
+An `{options}` object has the following properties that can be used as parameters for your `put()` operation:
 
 #### `name`
 
-The `name` parameter lets you attach an arbitrary name to the uploaded content archive, which you can use to identify and organize your uploads. The name is not stored alongside the data on IPFS, but it is viewable within the file listing on the Web3.Storage site.
+String. The `name` parameter lets you attach an arbitrary name to the uploaded content archive, which you can use to identify and organize your uploads. The name is not stored alongside the data on IPFS, but it is viewable within the file listing on the Web3.Storage site.
 
 ```js
 const cid = await client.put(files, { name: 'cat pics' })
@@ -73,7 +67,7 @@ const cid = await client.put(files, { name: 'cat pics' })
 
 #### `maxRetries`
 
-You can specify how many times `put` should attempt to retry in case of failure by passing in a `maxRetries` option:
+Number. You can specify how many times `put` should attempt to retry in case of failure by passing in a `maxRetries` option:
 
 ```js
 const cid = await client.put(files, { maxRetries: 3 })
@@ -81,7 +75,7 @@ const cid = await client.put(files, { maxRetries: 3 })
 
 #### `onRootCidReady`
 
-Because the data is formatted for IPFS and Filecoin on the client, the root CID for the data is generated before the data is uploaded to Web3.Storage. If you want to display the CID to the user before the upload is complete, pass in an `onRootCidReady` function that accepts a CID string:
+Function. Because the data is formatted for IPFS and Filecoin on the client, the root CID for the data is generated before the data is uploaded to Web3.Storage. If you want to display the CID to the user before the upload is complete, pass in an `onRootCidReady` function that accepts a CID string:
 
 ```js
 const onRootCidReady = rootCid => console.log('root cid:', rootCid)
@@ -90,7 +84,7 @@ const cid = await client.put(files, { onRootCidReady })
 
 #### `onStoredChunk`
 
-You can also display progress updates by passing in an `onStoredChunk` callback. This is called after each chunk of data is uploaded, with the size of the chunk in bytes passed in as a parameter:
+Function. You can also display progress updates by passing in an `onStoredChunk` callback. This is called after each chunk of data is uploaded, with the size of the chunk in bytes passed in as a parameter:
 
 ```js
 const onStoredChunk = chunkSize => console.log(`stored chunk of ${chunkSize} bytes`)
@@ -119,7 +113,9 @@ for (const file of files) {
 
 ### Return value
 
-The method returns a `Web3Response` object, which extends the [Fetch API response object](https://developer.mozilla.org/en-US/docs/Web/API/Response) to add two iterator methods unique to the Web3.Storage client library: `files()` and `unixFsIterator()`.
+Returns `undefined` if there are no matches for the given CID.
+
+If found, the method returns a `Web3Response` object, which extends the [Fetch API response object](https://developer.mozilla.org/en-US/docs/Web/API/Response) to add two iterator methods unique to the Web3.Storage client library: `files()` and `unixFsIterator()`.
 
 #### Using File objects
 
@@ -144,7 +140,7 @@ for await (const entry of res.unixFsIterator()) {
 }
 ```
 
-Note that not all `UnixFS` entries returned by the iterator represent files. If `entry.type == 'directory'`, the entry represents a directory and contains no data itself, just links to other entries.
+Note that not all `UnixFS` entries returned by the iterator represent files. If `entry.type == 'directory'`, the entry represents a directory and contains no data itself, it just links to other entries.
 
 For more details on `UnixFS` objects, see [the README file in the `UnixFS` GitHub repository](https://github.com/ipfs/js-ipfs-unixfs/blob/master/packages/ipfs-unixfs/README.md).
 
@@ -156,14 +152,50 @@ Parameters are supplied in positional order.
 | ------ | ---- | ----------- |
 | 1 | `string` | A string containing the CID of the CAR to be retrieved. |
 
-## Retrieve metadata
+## Check status
 
-Retrieve metadata about your file by using the `status()` method, supplying the CID of the file you are interested in.
+Retrieve metadata about your file by using the `status()` method, supplying the CID of the file you are interested in. This metadata includes the creation date and size, as well as details about how the network is storing your data. Using this information, you can identify peers on the InterPlanetary File System (IPFS) network that are pinning the data, and Filecoin storage providers that have accepted deals to store the data.
 
 ### Usage
 
 ```javascript
 <clientObject>.status(<CID>)
+```
+
+### Example
+
+Here is an example of a call to the `status()` method:
+
+```javascript
+const info = await client.status(rootCid)
+console.log(`${info.cid} ${info.dagSize} ${info.created}`)
+```
+
+Here is an example response from the `status()` method:
+
+```json
+{
+  "cid": "bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e",
+  "created": "2021-07-14T19:27:14.934572Z",
+  "dagSize": 101,
+  "pins": [{
+    "peerId": "12D3KooWR1Js",
+    "peerName": "peerName",
+    "region": "peerRegion",
+    "status": "Pinned"
+  }],
+  "deals": [{
+    "dealId": 12345,
+    "miner": "f99",
+    "status": "Active",
+    "pieceCid": "bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e",
+    "dataCid": "bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e",
+    "dataModelSelector": "Links/0/Links",
+    "activation": "2021-07-14T19:27:14.934572Z",
+    "created": "2021-07-14T19:27:14.934572Z",
+    "updated": "2021-07-14T19:27:14.934572Z"
+  }]
+}
 ```
 
 ### Parameters
@@ -176,12 +208,50 @@ Parameters are supplied in positional order.
 
 ### Return value
 
-The `status()` method returns a `Metadata` object that contains the metadata for your object's storage deal on the Web3.Storage network.
+Returns `undefined` if there are no matches for the given CID.
 
-TODO: As of this writing, the structure of the `Metadata` data type has not been finalized.
+If found, the `status()` method returns a `{Status}` object that contains the metadata for your object's storage deal on the Web3.Storage network, with the following properties:
 
-### Example
+#### `cid`
 
-```javascript
-const info = await client.status(rootCid) // Metadata
+String. The CID for the data for which you are retrieving status information.
+
+#### `dagSize`
+
+Number. The total size, in bytes, of the [Merkle Directed Acyclic Graph (DAG)](https://docs.ipfs.io/concepts/merkle-dag/) containing the queried CID.
+
+#### `created`
+
+String. Creation date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+
+#### `pins`
+
+An array of `Pin` objects, each representing a specific [peer in the IPFS network,](https://docs.libp2p.io/concepts/peer-id/) with the following structure:
+
+```json
+Pin {
+  peerId: string, // Libp2p peer ID of the node pinning the data.
+  peerName: string, // Human readable name for the peer pinning the data.
+  region: string, // Approximate geographical region of the node pinning the data.
+  status: string, // Can be one of: 'Pinned' | 'Pinning' | 'PinQueued'
+  updated: string // Updated date in ISO 8601 format.
+}
+```
+
+#### `deals`
+
+An array of `Deal` objects, each representing a specific [storage deal on the Filecoin network,](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#deals) for a specific [Piece](https://spec.filecoin.io/systems/filecoin_files/piece/) of data, with the following structure:
+
+```json
+Deal {
+  dealId: number, // On-chain ID of the deal.
+  miner: string, // Address of the miner storing this data.
+  status: string, // Can be one of: 'Queued' | 'Published' | 'Active'
+  pieceCid: string, // Piece CID of the data in the deal.
+  dataCid: string, // CID of the data aggregated in this deal.
+  dataModelSelector: string, // Selector for extracting data from the aggregated root.
+  activation: string, // Date when the deal will become active, in ISO 8601 format.
+  created: string, // Creation date, in ISO 8601 format.
+  updated: string // Updated date, in ISO 8601 format.
+}
 ```
