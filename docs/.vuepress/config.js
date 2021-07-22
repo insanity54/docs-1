@@ -80,7 +80,6 @@ module.exports = {
             title: 'Concepts',
             collapsable: false,
             children: [
-                '/concepts/',
                 '/concepts/content-addressing',
                 '/concepts/decentralized-storage',
             ]
