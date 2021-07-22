@@ -71,13 +71,7 @@ module.exports = {
           { text: 'Docs', link: '/' }
         ],
         sidebar: [
-          {
-            title: 'Quickstart',
-            collapsable: false,
-            children: [
-                '/quickstart/'
-            ]
-          },
+            '/',
           {
             title: 'Concepts',
             collapsable: false,
