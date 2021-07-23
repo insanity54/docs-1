@@ -78,17 +78,17 @@ module.exports = {
             collapsable: false,
             children: [
                 '/concepts/content-addressing',
-                '/concepts/decentralized-storage',
+                '/concepts/decentralized-storage'
             ]
           },
           {
-            title: 'How tos',
+            title: 'How-tos',
             collapsable: false,
             children: [
               '/how-tos/store',
               '/how-tos/retrieve',
               '/how-tos/query',
-              '/how-tos/regenerate-api-token',
+              '/how-tos/regenerate-api-token'
             ]
           },
           {
