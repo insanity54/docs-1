@@ -32,6 +32,8 @@ Store files using the `put()` method.
 
 ### Example
 
+In the browser, using a file chooser to prompt the user for files to store:
+
 ```javascript
 const fileInput = document.querySelector('input[type="file"]')
 
@@ -40,6 +42,15 @@ const rootCid = await client.put(fileInput.files, {
   name: 'cat pics',
   maxRetries: 3
 })
+```
+
+On Node.js, using the `getFilesFromPath` helper to load `File` objects from a local path:
+
+```javascript
+import { getFilesFromPath } from 'web3.storage'
+
+const files = await getFilesFromPath('./files')
+const rootCid = await client.put(files)
 ```
 
 ### Return value

@@ -30,7 +30,7 @@ npm install web3.storage
 
 To create a `Web3Storage` client object, we need to pass an access token into the [constructor][reference-js-constructor]:
 
-```js
+```javascript
 import { Web3Storage } from 'web3.storage'
 const token = process.env.WEB3_STORAGE_TOKEN
 const client = new Web3Storage({ token })
@@ -46,13 +46,13 @@ When running in the browser, you can use the native `File` object provided by th
 
 On node.js, import `File` from the `web3.storage` package along with the `Web3Storage` object:
 
-```js
+```javascript
 import { File, Web3Storage } from 'web3.storage'
 ```
 
 Once you have a `File` constructor in scope, you can prepare your files for upload:
 
-```js
+```javascript
 const files = [
   new File(['contents-of-file-1'], 'plain-utf8.txt'),
   new File([aBlobOrArrayBuffer], 'pic.jpeg')
@@ -61,16 +61,31 @@ const files = [
 
 You can create a nested directory structure by adding files with path components separated by `/` characters:
 
-```js
+```javascript
 const files = [
   new File(kittyImageBytes, '/images/cats/kitty.jpeg'),
   new File(pugImageBytes, '/images/dogs/pug.jpeg'),
 ]
 ```
 
+On Node.js, the `web3.storage` package exports some helpful utility functions from the [`files-from-path` module](https://www.npmjs.com/package/files-from-path) that allow you to easily read `File` objects from the local file system. The `getFilesFromPath` helper asynchronously returns an array of `File`s that you can use directly with the `put` client method:
+
+```javascript
+import { getFilesFromPath, Web3Storage } from 'web3.storage'
+const token = 'your-api-token'
+const client = new Web3Storage( { token })
+
+async function storeFiles(path) {
+  const files = await getFilesFromPath(path)
+  const cid = await client.put(files)
+}
+```
+
+If you expect to be loading a lot of large files, you may be better served by the [`filesFromPath` helper](https://github.com/web3-storage/files-from-path#filesfrompath), which will reduce memory pressure by `yield`-ing `File` objects one-by-one as they're loaded from disk instead of loading everything into memory. You can then issue multiple `put` requests to send each file to Web3.Storage.
+
 In the browser, you can also use a [file input element][mdn-file-input] to allow the user to select files for upload, instead of creating `File` objects manually:
 
-```js
+```javascript
 const fileInput = document.querySelector('input[type="file"]')
 const files = fileInput.files
 ```
@@ -83,7 +98,7 @@ Try to give each file a unique file name! All the files in a `put` request will 
 
 Once you have a client object and an array of `File`s, uploading is simple:
 
-```js
+```javascript
 const cid = await client.put(files)
 ```
 
