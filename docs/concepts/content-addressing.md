@@ -5,7 +5,16 @@ description: A conceptual overview of content-based addressing for storing and l
 
 # Content addressing
 
-_Content addressing_ is a technique for organizing and locating data in an information system in which the key used to locate content is derived from the content itself rather than a location.
+Content identifiers (CIDs) are a way to identify content by what's in it rather than by where it's located. Looking for an item by content is something you already do all the time. For example, when you look for a book in the library, you often ask for it by the title; that's content addressing because you're asking for _what_ it is. If you were using location addressing to find that book, you'd ask for it by _where_ it is  - "_I want the book that's on the second floor, first stack, third shelf from the bottom, four books from the left_". If someone moved that book, you'd be out of luck!
+
+That problem exists for the internet and on your computer! Right now, content is found by location, such as:
+
+- `https://en.wikipedia.org/wiki/Aardvark`
+- `/Users/Alice/Documents/term_paper.doc`
+- `C:\Users\Bob\My Documents\project_sprint_presentation.ppt`
+
+If `wikipedia.org` went offline, or Alice renamed the `term_paper.doc` file, or if Bob changed his username to `Charlie` then none of the above links would work!
+
 
 ## The basic problem
 
