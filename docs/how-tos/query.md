@@ -53,6 +53,7 @@ if (status) {
 
 If the given CID is valid and has been uploaded to Web3.Storage, the `status` method will return an object that looks similar to this:
 
+
 <!-- TODO: replace with an example that has a populated deals field (once that's live) -->
 
 ```json
@@ -95,6 +96,11 @@ What do all those fields mean? Here's a summary:
 - `deals` contains an array of objects describing the Filecoin storage providers that have made [storage deals][fil-docs-deals]. These storage providers have committed to storing the data for an agreed period of time.
 
 For more details about the fields in this JSON response, including the format of the `pins` and `deals` objects, see the [JavaScript client library reference][reference-js-status].
+
+:::tip
+If you're looking for info on files you've uploaded, you can also use the **Files** page on [web3.storage](https://web3.storage) to see the values for some of the more commonly-used attributes returned by `query()`, namely `created`, `cid`, `dagSize`, and the `status` and `deals` objects of `pins`.
+
+:::
 
 ## Next steps
 
