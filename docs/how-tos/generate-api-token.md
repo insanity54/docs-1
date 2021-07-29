@@ -12,10 +12,10 @@ You'll need a free Web3.Storage account in order to generate an API token. If yo
 ## Create a new token
 
 
-1. From the Web3.Storage navigation menu, click **Profile** to go to your [profile page](https://web3.storage/profile).
-1. Scroll down to the **API tokens** section and click **Create an API token**. (If you've never created an API token on Web3.Storage before, you'll also see an invitation to do this from the **Getting started** section of your profile page.)
+1. From the Web3.Storage navigation menu, click **Account** to go to your [account page](https://web3.storage/account).
+1. Scroll down to the **API tokens** section and click **Create an API token**. (If you've never created an API token on Web3.Storage before, you'll also see an invitation to do this from the **Getting started** section of your account page.)
 
-![Screenshot of a Web3.Storage profile page](./images/account-page-no-tokens.png)
+![Screenshot of a Web3.Storage account page](./images/account-page-no-tokens.png)
 
 3. Give your new API token a descriptive name that will be easy for you to remember later.
 
