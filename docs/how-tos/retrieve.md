@@ -48,14 +48,14 @@ Once you have a client, you can call `client.get`, passing in a CID string:
 
 The `get` method returns a `Web3Response` object. This object extends the [`Response` object][mdn-response] from the Web [Fetch API][mdn-fetch] with two methods that provide access to the retrieved IPFS data: `files` and `unixFsIterator()`.
 
-The [`files` method][reference-js-web3response-files] returns an array of `Web3File` objects, which represent all files contained in the content archive identified by the given CID. A `Web3File` is just like a regular Web [`File` object][mdn-file], with the addition of `path` and `cid` properties. These contain the relative path of the file within the archive and the CID of the file, respectively.
+The [`files` method][reference-js-web3response] returns an array of `Web3File` objects, which represent all files contained in the content archive identified by the given CID. A `Web3File` is just like a regular Web [`File` object][mdn-file], with the addition of `path` and `cid` properties. These contain the relative path of the file within the archive and the CID of the file, respectively.
 
 Here's the example from above, now with the code to unpack and inspect the files in the response:
 
 <<<@/code-snippets/how-to/index.js#retrieve-unpack-files
 
 :::tip
-Another option is to use the array of `unixFs` objects provided by the `unixFsIterator()` method to iterate through your files. While in the vast majority of cases you'll want to use the `files()` method outlined above, existing IPFS users may prefer interacting with `unixFs` objects if they have existing code or tooling that supports it. For more details, see the [JavaScript client library reference](/reference/client-library.md).
+Another option is to use the array of `unixFs` objects provided by the `unixFsIterator()` method to iterate through your files. While in the vast majority of cases you'll want to use the `files()` method outlined above, existing IPFS users may prefer interacting with `unixFs` objects if they have existing code or tooling that supports it. For more details, see the [JavaScript client library reference][reference-js].
 :::
 
 ## Using the IPFS command line
@@ -74,7 +74,7 @@ If you want to get a specific file out of the bundle, add its name onto the end 
 ipfs get bafybeidd2gyhagleh47qeg77xqndy2qy3yzn4vkxmk775bg2t5lpuy7pcu/youareanonsense.jpg
 ```
 
-## Using curl or Powershell 
+## Using curl or Powershell
 
 Sometimes you may need to just download a specific file to your computer using the command line. Unix-based operating systems, like Linux and macOS, can use curl. Windows users can use Powershell.
 
@@ -100,12 +100,12 @@ Sometimes you may need to just download a specific file to your computer using t
     Your complete command should look something like this:
 
     ```shell
-    curl https://bafybeie2bjap32zi2yqh5jmpve5njwulnkualcbiszvwfu36jzjyqskceq.ipfs.dweb.link/example.txt -o ~/output-file.txt 
+    curl https://bafybeie2bjap32zi2yqh5jmpve5njwulnkualcbiszvwfu36jzjyqskceq.ipfs.dweb.link/example.txt -o ~/output-file.txt
     ```
 
 :::
 
-:::tab macOS 
+:::tab macOS
 
 1. Open a terminal window.
 1. Use `curl` to download your file:
@@ -125,7 +125,7 @@ Sometimes you may need to just download a specific file to your computer using t
     Your complete command should look something like this:
 
     ```shell
-    curl https://bafybeie2bjap32zi2yqh5jmpve5njwulnkualcbiszvwfu36jzjyqskceq.ipfs.dweb.link/example.txt -o ~/output-file.txt 
+    curl https://bafybeie2bjap32zi2yqh5jmpve5njwulnkualcbiszvwfu36jzjyqskceq.ipfs.dweb.link/example.txt -o ~/output-file.txt
     ```
 
 :::
@@ -164,13 +164,12 @@ You can also use the client library to get more information about the status of 
 
 <!-- internal links -->
 [reference-js]: ../reference/client-library.md
-[quickstart-guide]: ../quickstart/README.md
+[quickstart-guide]: ../README.md#quickstart
 [concepts-content-addressing]: ../concepts/content-addressing.md
 [howto-store]: ./store.md
 [howto-query]: ./query.md
 
-[reference-js-web3response-files]: ../reference/client-library.md#return-value-2
-[reference-js-web3response-unixfsiterator]: ../reference/client-library.md#return-value-2
+[reference-js-web3response]: ../reference/client-library.md#return-value-2
 [reference-js-constructor]: ../reference/client-library.md#constructor
 
 <!-- external links -->
