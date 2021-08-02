@@ -76,7 +76,7 @@ Method parameters are supplied in positional order.
 | 1 | `file[]` | An iterable collection of [Files](https://developer.mozilla.org/en-US/docs/Web/API/File) to be packed into a CAR and uploaded. |
 | 2 | `{options}` | _Optional._ An object whose properties define certain Web3.Storage options and metadata about the files being uploaded. See below for more details. |
 
-An `{options}` object has the following properties that can be used as parameters for your `put()` operation:
+An `{options}` object has the following properties that can be used as parameters when calling `put()`:
 
 ::: details name
 _String._ The `name` parameter lets you attach an arbitrary name to the uploaded content archive, which you can use to identify and organize your uploads. The name is not stored alongside the data on IPFS, but it is viewable within the file listing on the Web3.Storage site.
@@ -269,7 +269,11 @@ _Number._ The `dagSize` property is the total size, in bytes, of the [Merkle Dir
 ::: details created
 
 _String._ The `created` property gives the creation date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+
+::: tip
+The `created` date returned by a call to `status()` is the date and time that the CID was first seen on the network. The date given by a call to `list()` is the date and time of a particular upload via a call to `put()`. These can differ if multiple users upload the same file(s).
 :::
+
 
 ::: details pins
 
@@ -305,4 +309,70 @@ Deal {
 ```
 :::
 
+## List uploads
 
+List previous uploads with the `list()` method.
+
+### Usage
+
+```javascript
+<clientObject>.list({before, maxResults})
+```
+
+### Example
+
+The following example stores return values from a call to `list()` into a JavaScript array:
+
+```javascript
+// Return the names of 10 uploads
+const uploadNames = []
+for await (const item of client.list({ maxResults: 10 })) {
+    uploadNames.push(item.name)
+}
+```
+
+### Parameters
+
+The `list()` method accepts an `{options}` object with the following properties:
+
+::: details before
+_String_. Specifies a date, in ISO 8601 format. Ensures that the call to `list()` will not return any results newer than the given date.
+:::
+
+::: details maxResults
+_Number_. Specifies the maximum number of uploads to return when calling `list()`.
+:::
+
+### Return value
+
+The return value for `list()` is an `AsyncIterable` object, containing objects whose data structure is the same as the return value for `status()` but with one extra propery: a string field called `name` that corresponds to the value given passed to the `name` parameter in the original call to `put()`. This means that iterating through results from your call to `list()` yields objects with the below example structure.
+
+```json
+{
+  "name": "cat pics",
+  "cid": "bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e",
+  "created": "2021-07-14T19:27:14.934572Z",
+  "dagSize": 101,
+  "pins": [{
+    "peerId": "12D3KooWR1Js",
+    "peerName": "peerName",
+    "region": "peerRegion",
+    "status": "Pinned"
+  }],
+  "deals": [{
+    "dealId": 12345,
+    "miner": "f99",
+    "status": "Active",
+    "pieceCid": "bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e",
+    "dataCid": "bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e",
+    "dataModelSelector": "Links/0/Links",
+    "activation": "2021-07-14T19:27:14.934572Z",
+    "created": "2021-07-14T19:27:14.934572Z",
+    "updated": "2021-07-14T19:27:14.934572Z"
+  }]
+}
+```
+
+::: tip
+The `created` date on these objects are the date and time that the user uploaded via `put()`. The `created` date given by a call to `status()` is the date and time that the CID was first seen on the network. These can differ if multiple users uploaded the same file(s).
+:::
