@@ -96,6 +96,7 @@ module.exports = {
             title: 'Reference',
             collapsable: false,
             children: [
+              ['/http-api.html','HTTP API Reference'],
               '/reference/client-library'
             ]
           },
