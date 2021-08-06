@@ -67,12 +67,13 @@
         </a>
       </div>
       <redoc id="ReDocMe" style="background-color: white"/>
-      <!-- Config options documented: -->
+      <!-- Config options documented: https://github.com/Redocly/redoc -->
       <script language="JavaScript">
          Redoc.init('schema.yml', {
            expandResponses: "200",
            pathInMiddlePanel: true,
            disableSearch: true,
+           expandSingleSchemaField: "Web3 Storage"
          }, document.getElementById('ReDocMe'))
       </script>
    </body>
