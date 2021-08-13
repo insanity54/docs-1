@@ -97,7 +97,7 @@ const cid = await client.put(files, { maxRetries: 3 })
 
 ::: details wrapWithDirectory
 
-_Boolean._ The `wrapWithDirectory` parameter controls whether the files will be wrapped in an IPFS directory when added to Web3.Storage. With the default value of `true`, all files provided to the `put` method will be wrapped in an IPFS directory listing. 
+_Boolean._ The `wrapWithDirectory` parameter controls whether the files will be wrapped in an IPFS directory when added to Web3.Storage. With the default value of `true`, all files provided to the `put` method will be wrapped in an IPFS directory listing.
 
 For example, when adding a file called `hello.txt` using the default behavior, the root CID returned by the `put` method identifies a directory containing a file named `hello.txt`, rather than the `hello.txt` file itself, which is accessible at `<rootCID>/hello.txt`.
 
@@ -258,26 +258,42 @@ Here's an example response from the `status()` method:
 
 ```json
 {
-  "cid": "bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e",
-  "created": "2021-07-14T19:27:14.934572Z",
-  "dagSize": 101,
-  "pins": [{
-    "peerId": "12D3KooWR1Js",
-    "peerName": "peerName",
-    "region": "peerRegion",
-    "status": "Pinned"
-  }],
-  "deals": [{
-    "dealId": 12345,
-    "storageProvider": "f099",
-    "status": "Active",
-    "pieceCid": "bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e",
-    "dataCid": "bafkreifzjut3te2nhyekklss27nh3k72ysco7y32koao5eei66wof36n5e",
-    "dataModelSelector": "Links/0/Links",
-    "activation": "2021-07-14T19:27:14.934572Z",
-    "created": "2021-07-14T19:27:14.934572Z",
-    "updated": "2021-07-14T19:27:14.934572Z"
-  }]
+  "ok": true,
+  "value": {
+    "cid": "bafkreidivzimqfqtoqxkrpge6bjyhlvxqs3rhe73owtmdulaxr5do5in7u",
+    "size": 132614,
+    "created": "2021-03-12T17:03:07.787Z",
+    "type": "image/jpeg",
+    "scope": "default",
+    "pin": {
+      "cid": "bafkreidivzimqfqtoqxkrpge6bjyhlvxqs3rhe73owtmdulaxr5do5in7u",
+      "name": "pin name",
+      "meta": {},
+      "status": "queued",
+      "created": "2021-03-12T17:03:07.787Z",
+      "size": 132614
+    },
+    "files": [
+      {
+        "name": "logo.jpg",
+        "type": "image/jpeg"
+      }
+    ],
+    "deals": [
+      {
+        "batchRootCid": "bafkreidivzimqfqtoqxkrpge6bjyhlvxqs3rhe73owtmdulaxr5do5in7u",
+        "lastChange": "2021-03-18T11:46:50.000Z",
+        "miner": "f05678",
+        "network": "nerpanet",
+        "pieceCid": "bafkreidivzimqfqtoqxkrpge6bjyhlvxqs3rhe73owtmdulaxr5do5in7u",
+        "status": "queued",
+        "statusText": "miner rejected my data",
+        "chainDealID": 138,
+        "dealActivation": "2021-03-18T11:46:50.000Z",
+        "dealExpiration": "2021-03-18T11:46:50.000Z"
+      }
+    ]
+  }
 }
 ```
 
